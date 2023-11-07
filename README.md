@@ -1,4 +1,4 @@
-### <ins>User Dashboard</ins>
+### Color-UI
 
 ![react](https://img.shields.io/badge/frontend-react-61dafb?style=flat&logo=React)
 ![styled-components](https://img.shields.io/badge/styling-styled--components-ec5c8d?style=flat&logo=styled-components)
