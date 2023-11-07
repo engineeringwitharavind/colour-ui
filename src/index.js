@@ -3,6 +3,10 @@ import { createRoot } from 'react-dom/client';
 import { StyleSheetManager } from 'styled-components';
 import GlobalStyles from '../src/components/App/GlobalStyles';
 import App from '../src/components/App/App';
+import dotenv from 'dotenv';
+
+// Load environment variables
+dotenv.config();
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);
