@@ -1,56 +1,59 @@
-### Color-UI
+### Hue Sync
 
-![react](https://img.shields.io/badge/frontend-react-61dafb?style=flat&logo=React)
+![react](https://img.shields.io/badge/interfaces-react-61dafb?style=flat&logo=React)
 ![styled-components](https://img.shields.io/badge/styling-styled--components-ec5c8d?style=flat&logo=styled-components)
+
+Discover dominant color palettes related to your search query!
 
 <hr />
 
-### Data Model:
+### Primary Components and Data Flow:
 
-As I couldn't find any relevant APIs due to time constraints, I have created a manual dataset with common english words and it's `hex` codes to match the requirements.
+#### Components:
 
-```json
-{
-  "tree": ["#228B22", "#008000", "#556B2F"],
-  "sky": ["#87CEEB", "#00BFFF", "#1E90FF"],
-  "apple": ["#FF4500", "#FF6347", "#8B0000"],
-  "sun": ["#FFD700", "#FFA500", "#F0E68C"],
-  "ocean": ["#1E90FF", "#00BFFF", "#4169E1"],
-  "grass": ["#228B22", "#008000", "#7CFC00"],
-  "rose": ["#FF69B4", "#FF1493", "#FFC0CB"],
-  "cloud": ["#FFFFFF", "#F5F5F5", "#D3D3D3"],
-  "banana": ["#FFFF00", "#FFD700", "#FFC125"],
-  "cherry": ["#FF4500", "#FF6347", "#8B0000"],
-  "lemon": ["#FFF44F", "#FFD700", "#F0E68C"],
-  "peach": ["#FFDAB9", "#FFB6C1", "#FFC0CB"],
-  "chocolate": ["#8B4513", "#D2691E", "#A0522D"],
-  "coffee": ["#A52A2A", "#8B4513", "#D2691E"],
-  "smoke": ["#D3D3D3", "#B0C4DE", "#778899"],
-  "fire": ["#FF4500", "#FF6347", "#8B0000"],
-  "leaf": ["#228B22", "#008000", "#556B2F"],
-  "peacock": ["#00A86B", "#006747", "#339966"],
-  "butterfly": ["#87CEEB", "#00BFFF", "#1E90FF"],
-  "beach": ["#F5DEB3", "#D2B48C", "#DEB887"],
-  "strawberry": ["#FF0000", "#DC143C", "#B22222"],
-  "butter": ["#FFD700", "#FFA500", "#F0E68C"],
-  "carrot": ["#FFA500", "#FF6347", "#FF4500"],
-  "mint": ["#00FF7F", "#ADFF2F", "#98FB98"],
-  "oak": ["#8B4513", "#D2691E", "#A0522D"],
-  "lavender": ["#E6E6FA", "#9370DB", "#7B68EE"],
-  "rosemary": ["#008000", "#228B22", "#556B2F"],
-  "daisy": ["#FFD700", "#FFA500", "#F0E68C"],
-  "vanilla": ["#FFFFF0", "#FFFACD", "#FAFAD2"],
-  "blueberry": ["#0000CD", "#1E90FF", "#4169E1"],
-  "champagne": ["#F7E7CE", "#E6BE8A", "#D2B48C"],
-  "pumpkin": ["#FF4500", "#FF6347", "#8B0000"],
-  "almond": ["#FF4500", "#FF6347", "#8B0000"],
-  "cinnamon": ["#A52A2A", "#8B4513", "#D2691E"],
-  "nutmeg": ["#8B4513", "#D2691E", "#A0522D"],
-  "raspberry": ["#E30B5D", "#C71585", "#DB7093"]
-}
-```
+- **SearchTextInput:** This parent component handles user searches and fetches images related to the `searchQuery`.
 
-### 🏁 &nbsp; <ins>Installing & Getting started</ins>
+- **PaletteItem:** A component that receives a list of image URLs (`imageUrl`) as a prop and extracts color codes from the prop object, storing them in a separate state variable.
+
+- **ColorGrid:** Another parent component responsible for rendering a masonry grid of `ColorCard` components, each displaying `HEX` color codes.
+
+- **ColorCard:** A child card component that holds individual `HEX` color code values.
+
+#### Data Flow:
+
+1. **SearchTextInput:**
+
+   - Manages two state variables: `searchQuery` for capturing user input and `imageThumbnails` to store image thumbnails fetched based on the `searchQuery`.
+
+2. **Fetch Function (`fetchRelatedColors`):**
+
+   - Fetches images using the `searchQuery`, mapping the results, and extracting image thumbnail links, which are then pushed to the `imageThumbnails` state.
+
+3. **Form Submission (`handleSubmit`):**
+
+   - Handles form submissions by triggering the `fetchRelatedColors` function and resetting the `searchQuery`.
+
+4. **PaletteItem:**
+
+   - Extracts colors from images based on the word searched for in the `searchQuery` state.
+   - Iterates over `imageThumbnails`, extracting appropriate `imageUrl` and passing it as a prop.
+
+5. **Color Extraction:**
+
+   - Extracts individual color codes from the `imageUrl` object, such as "vibrant," "lightVibrant," etc., within the `PaletteItem` component.
+
+6. **Duplicates Handling:**
+
+   - Ensures that duplicate colors are not added to the state variable.
+   - Collects all dominant colors obtained from the `imageUrl` object.
+
+7. **ColorGrid:**
+   - Receives the dominant colors stored in the `dominantColors` state variable.
+   - Renders a masonry grid of `ColorCard` components with `HEX` color codes.
+
+<hr />
+
+### Installing & Getting started
 
 A minimal setup you need to get this application up & running.
 
@@ -76,9 +79,9 @@ yarn && yarn start
 
 <hr />
 
-### ✨ &nbsp; <ins>Highlights</ins>
+### Highlights
 
-- I have built everything from scratch with modular CSS code. Styled Components is my preference as it has huge benefits compared to other component libraries when it comes to building React applications.
+- Built everything from scratch with modular CSS code. Styled Components is my preference as it has huge benefits compared to other component libraries when it comes to building React applications.
 
   - **Single Source of truth** and isolated CSS enclosed within the Component. **No naming collision issues** or **specificity wars**.
   - **Component Based** just like React. We can create tiny but useful sub components like `Aside`, `FullWidthWrapper` components.
@@ -86,13 +89,13 @@ yarn && yarn start
   - We could design our application with isolated components which results in **better Stacking Contexts** and **avoid z-index wars**.
   - All the **power of CSS** in addition to the **power of JavaScirpt** is quite fascinating.
 
-- **CSS Reset** is a minimal set of rules that **focuses mainly on Accessibility**. It can be used with any production grade applications.
-- Fully **responsive** to covers all range of devices.
+- The **CSS Reset** is equipped with a minimal set of rules that **focuses mainly on accessibility**.
+- Follows **fluid design principles**, to fulfil **responsiveness**, covering all range of devices.
 
 <hr />
 
-### 🚀 &nbsp; <ins>Hosting</ins>
+#### Live URL
 
-- Application live URL: https://color-ui.netlify.app/
+- Application live URL: https://hue-sync.netlify.app/
 
 <hr />
