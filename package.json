@@ -1,0 +1,27 @@
+{
+  "name": "color-ui",
+  "version": "1.0.0",
+  "description": "Type a word and get its colors in grid with appropriate hex codes",
+  "dependencies": {
+    "react": "18.0.0",
+    "react-dom": "18.0.0",
+    "react-scripts": "4.0.0",
+    "styled-components": "5.3.5"
+  },
+  "devDependencies": {
+    "@babel/runtime": "7.13.8"
+  },
+  "license": "MIT",
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "browserslist": [
+    ">0.2%",
+    "not dead",
+    "not ie <= 11",
+    "not op_mini all"
+  ]
+}
