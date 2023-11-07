@@ -7,6 +7,16 @@ Discover dominant color palettes related to your search query!
 
 <hr />
 
+### Screenshots:
+
+Initial State:
+<img width="1920" alt="Initial State UI" src="https://github.com/engineeringwitharavind/hue-sync/blob/main/public/Initial%20State.png">
+
+Happy Flow: 
+<img width="1920" alt="Initial State UI" src="https://github.com/engineeringwitharavind/hue-sync/blob/main/public/Happy%20Flow.png">
+
+<hr />
+
 ### Primary Components and Data Flow:
 
 #### Components:
@@ -71,7 +81,7 @@ Clone the repository using the below command
 git clone https://github.com/engineeringwitharavind/color-ui.git
 ```
 
-Go to the directory and install all the dependancies using this command
+Go to the directory and install all the dependencies using this command
 
 ```shell
 yarn && yarn start
@@ -81,11 +91,11 @@ yarn && yarn start
 
 ### Highlights
 
-- Built everything from scratch with modular CSS code. Styled Components is my preference as it has huge benefits compared to other component libraries when it comes to building React applications.
+- Built everything from scratch with modular CSS code. Styled Components is my preference as it has huge benefits compared to other component libraries for building React applications.
 
   - **Single Source of truth** and isolated CSS enclosed within the Component. **No naming collision issues** or **specificity wars**.
-  - **Component Based** just like React. We can create tiny but useful sub components like `Aside`, `FullWidthWrapper` components.
-  - Neat **mental model** that fits in our head, helps us **understand exactly what our pages will look like**, without needing to do a bunch of manual testing.
+  - **Component Based** just like React. We can create tiny but useful sub-components like `Aside`, `FullWidthWrapper` components.
+  - A neat **mental model** that fits in our head, helps us **understand exactly what our pages will look like**, without needing to do a bunch of manual testing.
   - We could design our application with isolated components which results in **better Stacking Contexts** and **avoid z-index wars**.
   - All the **power of CSS** in addition to the **power of JavaScirpt** is quite fascinating.
 
